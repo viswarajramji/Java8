@@ -4,58 +4,8 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.function.Consumer;
 
-class Student {
-	private int studId;
-	private String studentName;
-	private int mark1;
-	private int mark2;
+import data.Student;
 
-	public Student(int studId, String studentName) {
-		this.studId = studId;
-		this.studentName = studentName;
-	}
-
-	public Student(int studId, String studentName, int mark1, int mark2) {
-		super();
-		this.studId = studId;
-		this.studentName = studentName;
-		this.mark1 = mark1;
-		this.mark2 = mark2;
-	}
-
-	public int getStudId() {
-		return studId;
-	}
-
-	public void setStudId(int studId) {
-		this.studId = studId;
-	}
-
-	public String getStudentName() {
-		return studentName;
-	}
-
-	public void setStudentName(String studentName) {
-		this.studentName = studentName;
-	}
-
-	public int getMark1() {
-		return mark1;
-	}
-
-	public void setMark1(int mark1) {
-		this.mark1 = mark1;
-	}
-
-	public int getMark2() {
-		return mark2;
-	}
-
-	public void setMark2(int mark2) {
-		this.mark2 = mark2;
-	}
-
-}
 
 public class LamdaConsumerFunctions {
 
