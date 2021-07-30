@@ -6,7 +6,7 @@ import java.util.function.Consumer;
 import data.Student;
 import data.StudentDB;
 
-public class CosumerInterface {
+public class CosumerInterfaceExample1 {
 	public static void main(String args[]) {
 		Consumer<Student> c1=(Student s)->{
 			System.out.print("Name : "+s.getName());
