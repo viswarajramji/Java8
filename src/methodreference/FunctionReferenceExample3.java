@@ -1,7 +1,6 @@
 package methodreference;
 
 import java.util.function.Predicate;
-import java.util.function.Supplier;
 
 class Person {
 
