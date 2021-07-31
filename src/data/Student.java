@@ -96,6 +96,10 @@ public class Student {
 	public void setMark2(int mark2) {
 		this.mark2 = mark2;
 	}
+	
+	public String printName() {
+		return this.getName();
+	}
 
 
 
