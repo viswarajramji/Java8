@@ -100,6 +100,10 @@ public class Student {
 	public String printName() {
 		return this.getName();
 	}
+
+	public boolean isPassed() {
+		return this.mark1>50 && this.mark2>50;
+	}
 	
 	
 
