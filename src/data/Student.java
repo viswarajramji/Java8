@@ -1,23 +1,21 @@
 package data;
 
-
 import java.util.List;
 
 public class Student {
-    private String name;
-    private int gradeLevel;
-    private double gpa;
-    private String gender;
-    private int noteBooks;
-    private List<String> activity;
-    private int mark1;
-    private int mark2;
+	private String name;
+	private int gradeLevel;
+	private double gpa;
+	private String gender;
+	private int noteBooks;
+	private List<String> activity;
+	private int mark1;
+	private int mark2;
 
-    public Student(){
+	public Student() {
 
-    }
+	}
 
-   
 	public Student(String name, int gradeLevel, double gpa, String gender, int noteBooks, List<String> activity,
 			int mark1, int mark2) {
 		super();
@@ -30,8 +28,6 @@ public class Student {
 		this.mark1 = mark1;
 		this.mark2 = mark2;
 	}
-
-
 
 	public String getName() {
 		return name;
@@ -96,17 +92,19 @@ public class Student {
 	public void setMark2(int mark2) {
 		this.mark2 = mark2;
 	}
-	
+
 	public String printName() {
 		return this.getName();
 	}
 
 	public boolean isPassed() {
-		return this.mark1>50 && this.mark2>50;
+		return this.mark1 > 50 && this.mark2 > 50;
 	}
-	
-	
 
-
+	public void printValue() {
+		System.out.println("Name : " + this.getName());
+		System.out.println("Gender: " + this.getGender());
+		System.out.println("GradeLevel: " + this.getGradeLevel());
+	}
 
 }
