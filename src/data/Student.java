@@ -15,6 +15,10 @@ public class Student {
 	public Student() {
 
 	}
+	
+	public Student(String name) {
+		this.name=name;
+	}
 
 	public Student(String name, int gradeLevel, double gpa, String gender, int noteBooks, List<String> activity,
 			int mark1, int mark2) {
