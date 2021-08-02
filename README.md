@@ -27,6 +27,7 @@ This repository contain all the Java 8 related concepts and examples.
 * count : Number of values
 * sorted: sorts the result
 * sorted(Customization): sorts the result
+* filter: filters records by predicate
 
 
 

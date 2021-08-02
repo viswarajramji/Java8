@@ -17,7 +17,13 @@ public class StreamFunctionExamples {
 		count();
 		sort();
 		customSort();
+		filter();
 		
+	}
+	public static void filter() {
+		//activities containing swimming.
+		List<Student> resultList=students.stream().filter(s->s.getActivity().contains("swimming")).collect(Collectors.toList());
+		resultList.forEach(Student::printValue);
 	}
 	
 	public static void customSort() {
