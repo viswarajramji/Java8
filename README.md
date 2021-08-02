@@ -34,6 +34,8 @@ This repository contain all the Java 8 related concepts and examples.
 * anyMatch : true if any match happens.
 * allMatch : true if all match happens.
 * noneMatch : true if none of it matches.
+* findAny: return any object from the stream.
+* findfirst: return first object from the stream.
 
 
 

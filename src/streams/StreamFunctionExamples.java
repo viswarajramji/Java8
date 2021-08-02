@@ -31,33 +31,53 @@ public class StreamFunctionExamples {
 		allMatch();
 		anyMatch();
 		noMatch();
-		
+		findAny();
+		findFirst();
+	
+	}
+
+	public static void findFirst() {
+		Optional<Student> student = students.stream().filter(s -> s.getGpa() > 3.5).findFirst();
+		if(student.isPresent()) {
+			System.out.println("find first present : "+student.get().getName());
+		}else {
+			System.out.println("No value found");
+		}
+	}
+	
+	public static void findAny() {
+		Optional<Student> student = students.stream().filter(s -> s.getGpa() > 3.5).findAny();
+		if(student.isPresent()) {
+			System.out.println("find Any present : "+student.get().getName());
+		}else {
+			System.out.println("No value found");
+		}
 	}
 
 	public static void noMatch() {
 		// all the values should match by predicate
-		Predicate<Student> allMatchPre=(s->s.getGpa()>4.0);
-		boolean isValid= students.stream().noneMatch(allMatchPre);
+		Predicate<Student> allMatchPre = (s -> s.getGpa() > 4.0);
+		boolean isValid = students.stream().noneMatch(allMatchPre);
 		System.out.println(isValid);
-		
+
 	}
-	
+
 	public static void anyMatch() {
 		// all the values should match by predicate
-		Predicate<Student> allMatchPre=(s->s.getGpa()>4.0);
-		boolean isValid= students.stream().anyMatch(allMatchPre);
+		Predicate<Student> allMatchPre = (s -> s.getGpa() > 4.0);
+		boolean isValid = students.stream().anyMatch(allMatchPre);
 		System.out.println(isValid);
-		
+
 	}
-	
+
 	public static void allMatch() {
 		// all the values should match by predicate
-		Predicate<Student> allMatchPre=(s->s.getGpa()>1.0);
-		boolean isValid= students.stream().allMatch(allMatchPre);
+		Predicate<Student> allMatchPre = (s -> s.getGpa() > 1.0);
+		boolean isValid = students.stream().allMatch(allMatchPre);
 		System.out.println(isValid);
-		
+
 	}
-	
+
 	public static void skip() {
 		List<Integer> values = Arrays.asList(1, 2, 3, 4, 5);
 		Optional<Integer> val = values.stream().skip(3).reduce((a, b) -> a + b);
@@ -67,8 +87,7 @@ public class StreamFunctionExamples {
 		}
 		System.out.println("No sum value found");
 	}
-	
-	
+
 	public static void limit() {
 		List<Integer> values = Arrays.asList(1, 2, 3, 4, 5);
 		Optional<Integer> val = values.stream().limit(3).reduce((a, b) -> a + b);
@@ -80,19 +99,19 @@ public class StreamFunctionExamples {
 	}
 
 	public static void maxValue() {
-		List<Integer> values=Arrays.asList(1,2,3,4,5);
-		Optional<Integer> max=values.stream().reduce((a,b)->a>b?a:b);
-		if(max.isPresent()) {
+		List<Integer> values = Arrays.asList(1, 2, 3, 4, 5);
+		Optional<Integer> max = values.stream().reduce((a, b) -> a > b ? a : b);
+		if (max.isPresent()) {
 			System.out.println(max.get());
 			return;
 		}
 		System.out.println("No max value found");
 	}
-	
+
 	public static void minValue() {
-		List<Integer> values=Arrays.asList(1,2,3,4,5);
-		Optional<Integer> min=values.stream().reduce((a,b)->a>b?b:a);
-		if(min.isPresent()) {
+		List<Integer> values = Arrays.asList(1, 2, 3, 4, 5);
+		Optional<Integer> min = values.stream().reduce((a, b) -> a > b ? b : a);
+		if (min.isPresent()) {
 			System.out.println(min.get());
 			return;
 		}
