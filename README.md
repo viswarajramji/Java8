@@ -29,6 +29,14 @@ This repository contain all the Java 8 related concepts and examples.
 * sorted(Customization): sorts the result
 * filter: filters records by predicate
 * reduce: its a terminal operation , used to reduce the content to a single value.
+* limit: reduces the total number of values in the stream.
+* skip : skips the first N elements.
+* anyMatch : true if any match happens.
+* allMatch : true if all match happens.
+* noneMatch : true if none of it matches.
+
+
+
 
 Syntax:
 
