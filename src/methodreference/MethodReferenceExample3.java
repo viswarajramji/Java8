@@ -10,7 +10,7 @@ class Person {
 
 }
 
-public class FunctionReferenceExample3 {
+public class MethodReferenceExample3 {
 	public static void main(String args[]) {
 
 		Person p = new Person();

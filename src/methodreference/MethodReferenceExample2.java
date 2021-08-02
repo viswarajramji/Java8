@@ -2,7 +2,7 @@ package methodreference;
 
 import java.util.function.Function;
 
-public class FunctionReferenceExample2 {
+public class MethodReferenceExample2 {
 	public static void main(String args[]) {
 		Function<Integer, String> intToStr = (Integer i) -> {
 			return String.valueOf(i);
