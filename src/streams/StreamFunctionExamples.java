@@ -18,6 +18,13 @@ public class StreamFunctionExamples {
 		sort();
 		customSort();
 		filter();
+		reduce();	
+	}
+	public static void reduce() {
+		int totalMarks1=students.stream().map(Student::getMark1).reduce(0, (a,b)->a+b);
+		int totalMarks2=students.stream().map(Student::getMark2).reduce(0, (a,b)->a+b);
+		System.out.println(totalMarks1+" "+totalMarks2);
+		
 		
 	}
 	public static void filter() {

@@ -28,6 +28,14 @@ This repository contain all the Java 8 related concepts and examples.
 * sorted: sorts the result
 * sorted(Customization): sorts the result
 * filter: filters records by predicate
+* reduce: its a terminal operation , used to reduce the content to a single value.
+
+Syntax:
+
+reduce(InitialValue,BinaryFunc)
+
+
+
 
 
 
