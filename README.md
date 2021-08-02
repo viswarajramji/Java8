@@ -36,8 +36,9 @@ This repository contain all the Java 8 related concepts and examples.
 * noneMatch : true if none of it matches.
 * findAny: return any object from the stream.
 * findfirst: return first object from the stream.
-
-
+* of: converts a values to a stream.
+* iterate: this just iterates the values in a loop infinity (Use limit func to limit the iteration)
+* generate: this just uses supplier method and the get method is invoked infinity (Use limit func to limit the iteration)
 
 
 Syntax:

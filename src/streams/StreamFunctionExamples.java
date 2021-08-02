@@ -4,8 +4,12 @@ import java.util.Arrays;
 import java.util.Comparator;
 import java.util.List;
 import java.util.Optional;
+import java.util.Random;
+import java.util.UUID;
 import java.util.function.Predicate;
+import java.util.function.Supplier;
 import java.util.stream.Collectors;
+import java.util.stream.Stream;
 
 import data.Student;
 import data.StudentDB;
@@ -33,9 +37,28 @@ public class StreamFunctionExamples {
 		noMatch();
 		findAny();
 		findFirst();
+		
+		//stream factory API
+		of();
+		iterate();
+		generate();
+	}
 	
+	public static void iterate() {
+		Stream.iterate(0, i -> i+1).limit(5).forEach(System.out::println);
+	}
+	
+	public static void generate() {
+		Supplier<String> supplier=()->{
+			return UUID.randomUUID().toString();
+		};
+		Stream.generate(supplier).limit(10).forEach(System.out::println);
 	}
 
+	public static void of() {
+		Stream<Integer> values=Stream.of(1,2,3,4);
+		values.forEach(System.out::println);
+	}
 	public static void findFirst() {
 		Optional<Student> student = students.stream().filter(s -> s.getGpa() > 3.5).findFirst();
 		if(student.isPresent()) {
