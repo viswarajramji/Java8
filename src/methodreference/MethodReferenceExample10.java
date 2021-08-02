@@ -1,7 +1,6 @@
 package methodreference;
 
 import java.util.List;
-import java.util.function.Supplier;
 
 import data.Student;
 import data.StudentDB;
