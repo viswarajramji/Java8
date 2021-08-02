@@ -20,6 +20,13 @@ This repository contain all the Java 8 related concepts and examples.
 * Streams are lazy loading.
 
 
+###### Stream Methods:
+* map : converts stream from one form to another.
+* flatMap : converts stream from one form to another applies when List / Array to flat structure.
+* distinct : Unique values
+* count : Number of values
+* sorted: sorts the result
+* sorted(Customization): sorts the result
 
 
 
