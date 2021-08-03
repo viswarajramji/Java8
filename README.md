@@ -82,4 +82,21 @@ The terminal operation is used perform the joining.
 * SummingInt/averagingInt || SummingLong / averagingLong || SummingDouble /averagingDouble
 * grouping : performs groupby on the field.
 * groupBy : By max, min , CollectingAndthen.
-* paritioningBy:  
+* paritioningBy: 
+
+
+###### Optional
+
+Used to avoid null pointer and to avoid having too many null conditions.
+
+####### Optional Methods
+
+* ofNullable : convert a value to an optional object.
+
+
+
+
+
+
+
+ 
