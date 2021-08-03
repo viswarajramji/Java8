@@ -71,3 +71,8 @@ This repository contain all the Java 8 related concepts and examples.
 * mapToLong: convert Stream to LongStream.
 * mapToObj: convert Stream to stream of Objects.
 
+###### Streams API - terminal operations.
+
+The terminal operation is used perform the joining.
+
+* joining : concats the streams of string values.

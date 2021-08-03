@@ -9,6 +9,9 @@ import java.util.stream.Collectors;
 import java.util.stream.IntStream;
 import java.util.stream.LongStream;
 
+import data.Student;
+import data.StudentDB;
+
 public class StreamNumericFunctionExamples {
 	public static void main(String args[]) {
 		inputStream();
@@ -22,33 +25,58 @@ public class StreamNumericFunctionExamples {
 		mapToObj();
 		mapToLong();
 		mapToDouble();
+		concatStreamValues1();
+		concatStreamValues2();
+		concatStreamValues3();
+	}
+
+	public static void concatStreamValues1() {
+		System.out.println("****concatStreamValues1*****");
+		List<Student> students=StudentDB.getAllStudents();
+		String result=students.stream().map(Student::getName).collect(Collectors.joining());
+		System.out.println(result);
 	}
 	
+	public static void concatStreamValues2() {
+		System.out.println("****concatStreamValues2*****");
+		List<Student> students=StudentDB.getAllStudents();
+		String result=students.stream().map(Student::getName).collect(Collectors.joining(","));
+		System.out.println(result);
+	}
+
+	
+	public static void concatStreamValues3() {
+		System.out.println("****concatStreamValues3*****");
+		List<Student> students=StudentDB.getAllStudents();
+		String result=students.stream().map(Student::getName).collect(Collectors.joining(",","(",")"));
+		System.out.println(result);
+	}
+
+
 	public static void mapToDouble() {
 		System.out.println("****mapToDouble*****");
 		IntStream.rangeClosed(1, 10).mapToDouble(Double::valueOf).forEach(System.out::println);
 	}
-	
-	
+
 	public static void mapToLong() {
 		System.out.println("****maptoLong*****");
 		IntStream.rangeClosed(1, 10).mapToLong(Long::valueOf).forEach(System.out::println);
 	}
-	
+
 	public static void mapToObj() {
 		System.out.println("****maptoObj*****");
-		IntStream.rangeClosed(1, 10).mapToObj((i)->{
+		IntStream.rangeClosed(1, 10).mapToObj((i) -> {
 			return String.valueOf(i);
 		}).forEach(System.out::println);
 	}
-	
+
 	public static void unboxing() {
 		System.out.println("****Unboxing*****");
-		List<Integer> list=Arrays.asList(1,2,3,4);
-		int sum=list.stream().mapToInt(Integer::intValue).sum();
+		List<Integer> list = Arrays.asList(1, 2, 3, 4);
+		int sum = list.stream().mapToInt(Integer::intValue).sum();
 		System.out.println(sum);
 	}
-	
+
 	public static void boxing() {
 		System.out.println("****Boxing*****");
 		List<Integer> list = IntStream.rangeClosed(1, 10).boxed().collect(Collectors.toList());
