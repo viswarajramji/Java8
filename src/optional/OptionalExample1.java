@@ -10,6 +10,19 @@ public class OptionalExample1 {
 	public static void main(String args[]) {
 		printNames();
 		printNameWithOptional();
+		printNameswithOptionalOf();
+		
+
+	}
+
+	public static void printNameswithOptionalOf() {
+		//Optional<String> value = Optional.of(null);
+		Optional<String> value = Optional.of("test");
+		if (value.isPresent()) {
+			System.out.println(value.get());
+			return;
+		}
+		System.out.println("Not found");
 	}
 
 	public static void printNameWithOptional() {
