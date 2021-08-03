@@ -80,3 +80,6 @@ The terminal operation is used perform the joining.
 * mapping : would perform a transformation and then collects the values.
 * maxBy / minBy : uses a comparator and returns Max / Min value.
 * SummingInt/averagingInt || SummingLong / averagingLong || SummingDouble /averagingDouble
+* grouping : performs groupby on the field.
+* groupBy : By max, min , CollectingAndthen.
+* paritioningBy:  
