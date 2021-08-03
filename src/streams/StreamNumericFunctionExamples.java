@@ -5,6 +5,7 @@ import java.util.List;
 import java.util.Optional;
 import java.util.OptionalDouble;
 import java.util.OptionalInt;
+import java.util.stream.Collectors;
 import java.util.stream.IntStream;
 import java.util.stream.LongStream;
 
@@ -16,6 +17,21 @@ public class StreamNumericFunctionExamples {
 		longRange();
 		doubleRange();
 		aggregate();
+		boxing();
+		unboxing();
+	}
+	
+	public static void unboxing() {
+		List<Integer> list=Arrays.asList(1,2,3,4);
+		int sum=list.stream().mapToInt(Integer::intValue).sum();
+		System.out.println(sum);
+	}
+	
+	public static void boxing() {
+		List<Integer> list = IntStream.rangeClosed(1, 10).boxed().collect(Collectors.toList());
+		if (!list.isEmpty()) {
+			list.forEach(System.out::println);
+		}
 	}
 
 	public static void aggregate() {

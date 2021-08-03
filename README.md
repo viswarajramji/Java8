@@ -62,7 +62,10 @@ This repository contain all the Java 8 related concepts and examples.
 * min: find the min of the numeric stream values.
 * avg: find the avg of the numeric stream values.
 
+###### Boxing and Unboxing of Numeric Streams
 
+* Boxing :  int -> Integer / unboxing : Integer -> int.
+* boxed : will convert intStream to Stream<Integer>
 
 
 
