@@ -45,7 +45,7 @@ This repository contain all the Java 8 related concepts and examples.
 ######  intStream
 * rangeClosed: generates series of numbers.
 * range: generates the series of number excluding the last value.
-* sum: perform sum in the intStream.
+
 
 ######  LongStream
 * rangeClosed: generates series of numbers.
@@ -54,6 +54,13 @@ This repository contain all the Java 8 related concepts and examples.
 
 ######  DoubleStream
 * it does not support both rangeClosed and range. use the alternative approached discussed in the link.
+
+###### Aggregate functions in numeric functions:
+
+* sum:  Adds the numeric stream values.
+* max: find the max of the numeric stream values.
+* min: find the min of the numeric stream values.
+* avg: find the avg of the numeric stream values.
 
 
 
