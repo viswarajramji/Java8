@@ -37,7 +37,6 @@ public class StreamFunctionExamples {
 		noMatch();
 		findAny();
 		findFirst();
-		
 		//stream factory API
 		of();
 		iterate();

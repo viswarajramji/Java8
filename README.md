@@ -40,10 +40,10 @@ This repository contain all the Java 8 related concepts and examples.
 * iterate: this just iterates the values in a loop infinity (Use limit func to limit the iteration)
 * generate: this just uses supplier method and the get method is invoked infinity (Use limit func to limit the iteration)
 
+##### Stream  - Numeric functions:
 
-Syntax:
-
-reduce(InitialValue,BinaryFunc)
+* rangeClosed: generates series of numbers.
+* sum: perform sum in the intStream.
 
 
 
