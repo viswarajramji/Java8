@@ -14,7 +14,7 @@ This repository contain all the Java 8 related concepts and examples.
 
 
 
-##### Streams:
+##### Streams: 
 
 * Collect method is the one that invokes the streams.
 * Streams are lazy loading.
