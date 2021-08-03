@@ -66,7 +66,8 @@ This repository contain all the Java 8 related concepts and examples.
 
 * Boxing :  int -> Integer / unboxing : Integer -> int.
 * boxed : will convert intStream to Stream<Integer>
-
-
-
+* mapToInt: convert Stream to intputStream.
+* mapToDouble: Convert stream to DoubleStream.
+* mapToLong: convert Stream to LongStream.
+* mapToObj: convert Stream to stream of Objects.
 

@@ -19,15 +19,38 @@ public class StreamNumericFunctionExamples {
 		aggregate();
 		boxing();
 		unboxing();
+		mapToObj();
+		mapToLong();
+		mapToDouble();
+	}
+	
+	public static void mapToDouble() {
+		System.out.println("****mapToDouble*****");
+		IntStream.rangeClosed(1, 10).mapToDouble(Double::valueOf).forEach(System.out::println);
+	}
+	
+	
+	public static void mapToLong() {
+		System.out.println("****maptoLong*****");
+		IntStream.rangeClosed(1, 10).mapToLong(Long::valueOf).forEach(System.out::println);
+	}
+	
+	public static void mapToObj() {
+		System.out.println("****maptoObj*****");
+		IntStream.rangeClosed(1, 10).mapToObj((i)->{
+			return String.valueOf(i);
+		}).forEach(System.out::println);
 	}
 	
 	public static void unboxing() {
+		System.out.println("****Unboxing*****");
 		List<Integer> list=Arrays.asList(1,2,3,4);
 		int sum=list.stream().mapToInt(Integer::intValue).sum();
 		System.out.println(sum);
 	}
 	
 	public static void boxing() {
+		System.out.println("****Boxing*****");
 		List<Integer> list = IntStream.rangeClosed(1, 10).boxed().collect(Collectors.toList());
 		if (!list.isEmpty()) {
 			list.forEach(System.out::println);
