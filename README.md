@@ -89,7 +89,7 @@ The terminal operation is used perform the joining.
 
 Used to avoid null pointer and to avoid having too many null conditions.
 
-####### Optional Methods
+###### Optional Methods
 
 * ofNullable : convert a value to an optional object.
 * Of : this method is used if you are 100% sure the value is not null else the method throws an exception.
@@ -97,6 +97,12 @@ Used to avoid null pointer and to avoid having too many null conditions.
 * orElse: this method is used to print the default value if the optional value is null.
 * orElse: this method is used to print the supplier value if the optional value is null.
 * orElseThrow : This  method is going to throw a runtime exception.
+* isPresent: check if the optional has some values or not.
+* ifPresent: check if the optional has some values or not if yes then the consumer method is called to use that value.
+* filter: performs the predicate of the filter method.
+* map: this method maps the values of the optional parameter.
+* flatMap: Used to fetch the value of optional inside an optional object
+Ex: Optional<Student -> Optional<Bike>>
 
 
 

@@ -14,45 +14,73 @@ public class OptionalExample1 {
 		printNameswithOrElse();
 		printNameswithOrElseGet();
 		printNameswithOrElseThrow();
+		printNamesIfPresent();
+		printNamesFilter();
+		printflatMap();
+
+	}
+
+	public static void printflatMap() {
+		System.out.println("**** flatmap****");
+		Optional<Student> values = Optional.ofNullable(StudentDB.getAllStudents().get(1));
+		values.flatMap(Student::getSubject).ifPresent((s)->{
+			System.out.println(s.getName());
+		});
 		
 	}
-	
+
+	public static void printNamesFilter() {
+		System.out.println("*** filter **");
+		// Optional<Student>
+		// values=Optional.ofNullable(StudentDB.getAllStudents().get(0));
+		Optional<Student> values = Optional.ofNullable(null);
+		String val = values.filter(s -> s.getGpa() >= 4.0).map(Student::getName).orElse("no found");
+		System.out.println(val);
+	}
+
+	public static void printNamesIfPresent() {
+		Optional<Student> values = Optional.ofNullable(StudentDB.getAllStudents().get(0));
+		values.ifPresent((Student s) -> {
+			System.out.println("printNamesIfPresent");
+			System.out.println(s.getName());
+		});
+
+	}
 
 	public static void printNameswithOrElseThrow() {
-		Optional<Student> values=Optional.ofNullable(StudentDB.getAllStudents().get(0));
-		String value=values.map(Student::getName).orElseThrow(RuntimeException::new);
+		Optional<Student> values = Optional.ofNullable(StudentDB.getAllStudents().get(0));
+		String value = values.map(Student::getName).orElseThrow(RuntimeException::new);
 		System.out.println(value);
-		
+
 // 		Run time exception	
 //		values=Optional.ofNullable(null);
 //		value=values.map(Student::getName).orElseThrow(RuntimeException::new);
 //		System.out.println(value);
 	}
-	
-	
+
 	public static void printNameswithOrElseGet() {
-		Optional<Student> values=Optional.ofNullable(StudentDB.getAllStudents().get(0));
-		String value=values.map(Student::getName).orElseGet(()->"hello world");
+		Optional<Student> values = Optional.ofNullable(StudentDB.getAllStudents().get(0));
+		String value = values.map(Student::getName).orElseGet(() -> "hello world");
 		System.out.println(value);
-		
-		values=Optional.ofNullable(null);
-		value=values.map(Student::getName).orElseGet(()->"hello world");
+
+		values = Optional.ofNullable(null);
+		value = values.map(Student::getName).orElseGet(() -> "hello world");
 		System.out.println(value);
 	}
-	
+
 	public static void printNameswithOrElse() {
-		Optional<Student> values=Optional.ofNullable(StudentDB.getAllStudents().get(0));
-		String value=values.map(Student::getName).orElse("No value found");
+		Optional<Student> values = Optional.ofNullable(StudentDB.getAllStudents().get(0));
+		String value = values.map(Student::getName).orElse("No value found");
 		System.out.println(value);
-		
-		values=Optional.ofNullable(null);
-		value=values.map(Student::getName).orElse("No value found");
+
+		values = Optional.ofNullable(null);
+		value = values.map(Student::getName).orElse("No value found");
 		System.out.println(value);
-		
+
 	}
 
 	public static void printNameswithOptionalOf() {
-		//Optional<String> value = Optional.of(null);
+		// Optional<String> value = Optional.of(null);
 		Optional<String> value = Optional.of("test");
 		if (value.isPresent()) {
 			System.out.println(value.get());

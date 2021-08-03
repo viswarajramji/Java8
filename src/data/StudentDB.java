@@ -2,11 +2,14 @@ package data;
 
 import java.util.Arrays;
 import java.util.List;
+import java.util.Optional;
 
 public class StudentDB {
 
 	public static List<Student> getAllStudents() {
-
+		Subject sub=new Subject();
+		sub.setName("testsub");
+		Optional<Subject> val=Optional.ofNullable(sub);
 		Student student1 = new Student("Adam", 2, 4.0, "male", 10,Arrays.asList("swimming", "basketball", "volleyball"),98,97);
 		Student student2 = new Student("Jenny", 2, 3.8, "female", 11,Arrays.asList("swimming", "gymnastics", "soccer"),77,78);
 
@@ -15,7 +18,7 @@ public class StudentDB {
 
 		Student student5 = new Student("Sophia", 4, 3.5, "female", 10,Arrays.asList("swimming", "dancing", "football"),89,92);
 		Student student6 = new Student("James", 4, 3.9, "male", 22,Arrays.asList("swimming", "basketball", "baseball", "football"),44,88);
-
+		student6.setSubject(val);
 		List<Student> students = Arrays.asList(student1, student2, student3, student4, student5, student6);
 		return students;
 	}

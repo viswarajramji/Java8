@@ -1,6 +1,7 @@
 package data;
 
 import java.util.List;
+import java.util.Optional;
 
 public class Student {
 	private String name;
@@ -11,6 +12,7 @@ public class Student {
 	private List<String> activity;
 	private int mark1;
 	private int mark2;
+	private Optional<Subject> subject;
 
 	public Student() {
 
@@ -110,5 +112,15 @@ public class Student {
 		System.out.println("Gender: " + this.getGender());
 		System.out.println("GradeLevel: " + this.getGradeLevel());
 	}
+
+	public Optional<Subject> getSubject() {
+		return subject;
+	}
+
+	public void setSubject(Optional<Subject> subject) {
+		this.subject = subject;
+	}
+	
+	
 
 }
