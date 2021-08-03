@@ -104,7 +104,9 @@ Used to avoid null pointer and to avoid having too many null conditions.
 * flatMap: Used to fetch the value of optional inside an optional object
 Ex: Optional<Student -> Optional<Bike>>
 
-
+###### Default/Static methods
+* default : in this method, we can write default logic or override the method.
+* static:  cannot be overriden.
 
 
 
