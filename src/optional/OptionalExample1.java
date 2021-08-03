@@ -11,8 +11,44 @@ public class OptionalExample1 {
 		printNames();
 		printNameWithOptional();
 		printNameswithOptionalOf();
+		printNameswithOrElse();
+		printNameswithOrElseGet();
+		printNameswithOrElseThrow();
 		
+	}
+	
 
+	public static void printNameswithOrElseThrow() {
+		Optional<Student> values=Optional.ofNullable(StudentDB.getAllStudents().get(0));
+		String value=values.map(Student::getName).orElseThrow(RuntimeException::new);
+		System.out.println(value);
+		
+// 		Run time exception	
+//		values=Optional.ofNullable(null);
+//		value=values.map(Student::getName).orElseThrow(RuntimeException::new);
+//		System.out.println(value);
+	}
+	
+	
+	public static void printNameswithOrElseGet() {
+		Optional<Student> values=Optional.ofNullable(StudentDB.getAllStudents().get(0));
+		String value=values.map(Student::getName).orElseGet(()->"hello world");
+		System.out.println(value);
+		
+		values=Optional.ofNullable(null);
+		value=values.map(Student::getName).orElseGet(()->"hello world");
+		System.out.println(value);
+	}
+	
+	public static void printNameswithOrElse() {
+		Optional<Student> values=Optional.ofNullable(StudentDB.getAllStudents().get(0));
+		String value=values.map(Student::getName).orElse("No value found");
+		System.out.println(value);
+		
+		values=Optional.ofNullable(null);
+		value=values.map(Student::getName).orElse("No value found");
+		System.out.println(value);
+		
 	}
 
 	public static void printNameswithOptionalOf() {

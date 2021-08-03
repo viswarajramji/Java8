@@ -94,6 +94,11 @@ Used to avoid null pointer and to avoid having too many null conditions.
 * ofNullable : convert a value to an optional object.
 * Of : this method is used if you are 100% sure the value is not null else the method throws an exception.
 * empty : this method is a default method
+* orElse: this method is used to print the default value if the optional value is null.
+* orElse: this method is used to print the supplier value if the optional value is null.
+* orElseThrow : This  method is going to throw a runtime exception.
+
+
 
 
 
