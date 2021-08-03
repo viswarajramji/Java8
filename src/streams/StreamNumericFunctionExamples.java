@@ -4,12 +4,31 @@ import java.util.Arrays;
 import java.util.List;
 import java.util.Optional;
 import java.util.stream.IntStream;
+import java.util.stream.LongStream;
 
 public class StreamNumericFunctionExamples {
 	public static void main(String args[]) {
 		inputStream();
 		general();
-		
+		intRange();
+		longRange();
+		doubleRange();
+	}
+	
+	public static void doubleRange() {
+		IntStream.range(1, 4).asDoubleStream().forEach(System.out::println);
+	}
+	
+	public static void longRange() {
+		Long result=LongStream.range(1, 5).sum();
+		System.out.println(result);
+	
+	}
+	
+	public static void intRange() {
+		int result=IntStream.range(1, 5).sum();
+		System.out.println(result);
+	
 	}
 	
 	public static void general() {
