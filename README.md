@@ -108,6 +108,7 @@ Ex: Optional<Student -> Optional<Bike>>
 * default : in this method, we can write default logic or override the method.
 * static:  cannot be overriden.
 
+Note : Precedence order if a method is overridden in the child and is invoked then the child takes the precedence over the parent.
 
 
 
