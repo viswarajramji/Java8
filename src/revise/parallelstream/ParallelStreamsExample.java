@@ -15,31 +15,57 @@ public class ParallelStreamsExample {
 		availableProcessor();
 		realUseCaseStream();
 		realUseCaseParallelStream();
+		parallelLessPerformance();
 
+	}
+
+	public static void parallelLessPerformance() {
+		streamPerformance();
+		parallelPerformance();
+	}
+
+	public static void parallelPerformance() {
+		long startTime = System.currentTimeMillis();
+		List<Integer> list = IntStream.range(1, 100000).boxed().collect(Collectors.toList());
+		Integer value = list.parallelStream().reduce(0, (x, y) -> x + y);
+		System.out.println(value);
+		long endTime = System.currentTimeMillis();
+		System.out.println("Pallel : " + (endTime - startTime));
+	}
+
+	public static void streamPerformance() {
+		long startTime = System.currentTimeMillis();
+		List<Integer> list = IntStream.range(1, 100000).boxed().collect(Collectors.toList());
+		Integer value = list.stream().reduce(0, (x, y) -> x + y);
+		System.out.println(value);
+		long endTime = System.currentTimeMillis();
+		System.out.println("Pallel : " + (endTime - startTime));
 	}
 
 	public static void realUseCaseStream() {
 		long startTime = System.currentTimeMillis();
 		List<Student> students = StudentDB.getAllStudents();
-		List<String> list = students.stream().filter(s -> s.getGpa() == 4.0).map(Student::getName).sorted().collect(Collectors.toList());
+		List<String> list = students.stream().filter(s -> s.getGpa() == 4.0).map(Student::getName).sorted()
+				.collect(Collectors.toList());
 		if (!list.isEmpty())
 			list.forEach(System.out::println);
 		else
 			System.out.println("No Records found");
 		long endTime = System.currentTimeMillis();
-		System.out.println("time Stream -- "+(endTime - startTime));
+		System.out.println("time Stream -- " + (endTime - startTime));
 	}
 
 	public static void realUseCaseParallelStream() {
 		long startTime = System.currentTimeMillis();
 		List<Student> students = StudentDB.getAllStudents();
-		List<String> list = students.parallelStream().filter(s -> s.getGpa() == 4.0).map(Student::getName).sorted().collect(Collectors.toList());
+		List<String> list = students.parallelStream().filter(s -> s.getGpa() == 4.0).map(Student::getName).sorted()
+				.collect(Collectors.toList());
 		if (!list.isEmpty())
 			list.forEach(System.out::println);
 		else
 			System.out.println("No Records found");
 		long endTime = System.currentTimeMillis();
-		System.out.println("time parallel -- "+(endTime - startTime));
+		System.out.println("time parallel -- " + (endTime - startTime));
 	}
 
 	public static void availableProcessor() {
