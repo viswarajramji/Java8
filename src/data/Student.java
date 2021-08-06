@@ -122,5 +122,10 @@ public class Student {
 	}
 	
 	
+	public void setMark3() {
+		System.out.println("hello");
+	}
+	
+	
 
 }
