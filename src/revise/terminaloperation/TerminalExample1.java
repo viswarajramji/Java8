@@ -5,6 +5,7 @@ import java.util.Comparator;
 import java.util.List;
 import java.util.Map;
 import java.util.Optional;
+import java.util.function.Predicate;
 import java.util.stream.Collectors;
 
 import data.Student;
@@ -36,30 +37,40 @@ public class TerminalExample1 {
 		GroupByMax();
 		System.out.println("***GroupByCollectingThen***");
 		GroupByCollectingThen();
+		System.out.println("***GroupByParition***");
+		GroupByParititon();
 
 	}
 
-	
-	public static void 	GroupByCollectingThen() {
+	public static void GroupByParititon() {
+		Predicate<Student> predicate = (Student s) -> s.getGpa() >= 4.0;
 		List<Student> student = StudentDB.getAllStudents();
-		Map<String, Student> values = student.stream().collect(Collectors.groupingBy(Student::getGender,Collectors.collectingAndThen(Collectors.maxBy(Comparator.comparing(Student::getGpa)), Optional::get)));
-		values.forEach((gender,stu)->{
-				System.out.println("Gender : "+gender);
-				System.out.println("Student Name : "+stu.getName());
+		Map<Boolean, List<Student>> values = student.stream().collect(Collectors.partitioningBy(predicate));
+		values.forEach((bool, students) -> {
+			System.out.println("---" + bool + "---");
+			students.forEach((s) -> {
+				System.out.println(s.getName());
+			});
 		});
 	}
-	
+
+	public static void GroupByCollectingThen() {
+		List<Student> student = StudentDB.getAllStudents();
+		Map<String, Student> values = student.stream().collect(Collectors.groupingBy(Student::getGender,
+				Collectors.collectingAndThen(Collectors.maxBy(Comparator.comparing(Student::getGpa)), Optional::get)));
+		values.forEach((gender, stu) -> {
+			System.out.println("Gender : " + gender);
+			System.out.println("Student Name : " + stu.getName());
+		});
+	}
+
 	public static void GroupByMax() {
 		List<Student> student = StudentDB.getAllStudents();
-		Map<String,Optional<Student>> values=student.stream().collect(
-				Collectors.groupingBy(
-						Student::getGender,
-							Collectors.maxBy(
-									Comparator.comparing(Student::getGpa)
-											)));
-		values.forEach((gender,optStudent)->{
-				System.out.println("Gender : "+gender);
-				System.out.println("Student Name : "+optStudent.get().getName());
+		Map<String, Optional<Student>> values = student.stream().collect(
+				Collectors.groupingBy(Student::getGender, Collectors.maxBy(Comparator.comparing(Student::getGpa))));
+		values.forEach((gender, optStudent) -> {
+			System.out.println("Gender : " + gender);
+			System.out.println("Student Name : " + optStudent.get().getName());
 		});
 	}
 
