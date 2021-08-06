@@ -21,6 +21,23 @@ public class TerminalExample1 {
 		minBy();
 		System.out.println("***MaxBy***");
 		MaxBy();
+		System.out.println("***SummingInt***");
+		SummingInt();
+		System.out.println("***AverageInt***");
+		averageInt();
+
+	}
+
+	public static void averageInt() {
+		List<Student> list = StudentDB.getAllStudents();
+		Double value = list.stream().collect(Collectors.averagingInt(Student::getMark1));
+		System.out.println(value);
+	}
+
+	public static void SummingInt() {
+		List<Student> list = StudentDB.getAllStudents();
+		Integer value = list.stream().collect(Collectors.summingInt(Student::getMark1));
+		System.out.println(value);
 	}
 
 	public static void MaxBy() {
