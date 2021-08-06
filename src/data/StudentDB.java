@@ -18,7 +18,7 @@ public class StudentDB {
 
 		Student student5 = new Student("Sophia", 4, 3.5, "female", 10,Arrays.asList("swimming", "dancing", "football"),89,92);
 		Student student6 = new Student("James", 4, 3.9, "male", 22,Arrays.asList("swimming", "basketball", "baseball", "football"),44,88);
-		student6.setSubject(val);
+		student1.setSubject(val);
 		List<Student> students = Arrays.asList(student1, student2, student3, student4, student5, student6);
 		return students;
 	}

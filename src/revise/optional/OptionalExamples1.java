@@ -1,11 +1,11 @@
 package revise.optional;
 
 import java.util.Optional;
-import java.util.function.Consumer;
 import java.util.function.Supplier;
 
 import data.Student;
 import data.StudentDB;
+import data.Subject;
 
 public class OptionalExamples1 {
 	public static void main(String args[]) throws Exception {
@@ -20,16 +20,20 @@ public class OptionalExamples1 {
 		ifPresent();
 		filter();
 
-		Consumer<String > cons=System.out::println;
 	}
 
 	public static void filter() {
-//		Function<Student,String> func=Student::getName;
-//		func.apply(StudentDB.getAllStudents().get(0));
-		
-		Consumer<Student> val=Student::setMark3;
-		Student s1=StudentDB.getAllStudents().get(0);
-		val.accept(s1);
+		System.out.println("**Fitler**");
+		Optional<Student> students = Optional.ofNullable(StudentDB.getAllStudents().get(0));
+		Optional<Subject> subject = students.filter(s -> s.getGpa() > 3.9).filter(s -> s.getSubject() != null)
+				.flatMap(Student::getSubject);
+		if (subject.isPresent()) {
+			System.out.println(subject.get().getName());
+			return;
+		}
+
+		System.out.println("No data present");
+
 	}
 
 	public static void ifPresent() {
