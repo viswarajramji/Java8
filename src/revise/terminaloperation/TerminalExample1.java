@@ -30,7 +30,50 @@ public class TerminalExample1 {
 		groupBy();
 		System.out.println("***GroupingByCustomValue***");
 		groupByCustomValue();
+		System.out.println("***GroupByType2***");
+		GroupByType2();
+		System.out.println("***GroupByMax***");
+		GroupByMax();
+		System.out.println("***GroupByCollectingThen***");
+		GroupByCollectingThen();
 
+	}
+
+	
+	public static void 	GroupByCollectingThen() {
+		List<Student> student = StudentDB.getAllStudents();
+		Map<String, Student> values = student.stream().collect(Collectors.groupingBy(Student::getGender,Collectors.collectingAndThen(Collectors.maxBy(Comparator.comparing(Student::getGpa)), Optional::get)));
+		values.forEach((gender,stu)->{
+				System.out.println("Gender : "+gender);
+				System.out.println("Student Name : "+stu.getName());
+		});
+	}
+	
+	public static void GroupByMax() {
+		List<Student> student = StudentDB.getAllStudents();
+		Map<String,Optional<Student>> values=student.stream().collect(
+				Collectors.groupingBy(
+						Student::getGender,
+							Collectors.maxBy(
+									Comparator.comparing(Student::getGpa)
+											)));
+		values.forEach((gender,optStudent)->{
+				System.out.println("Gender : "+gender);
+				System.out.println("Student Name : "+optStudent.get().getName());
+		});
+	}
+
+	public static void GroupByType2() {
+		List<Student> list = StudentDB.getAllStudents();
+		Map<String, Integer> value = list.stream().collect(Collectors.groupingBy((Student s) -> {
+			if (s.getGender().equals("male")) {
+				return "M";
+			}
+			return "F";
+		}, Collectors.summingInt(Student::getMark1)));
+		value.forEach((String gender, Integer mark1) -> {
+			System.out.println("-Gender-" + gender + "-Mark-" + mark1);
+		});
 	}
 
 	public static void groupByCustomValue() {
