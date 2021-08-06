@@ -3,6 +3,7 @@ package revise.terminaloperation;
 import java.util.Arrays;
 import java.util.Comparator;
 import java.util.List;
+import java.util.Map;
 import java.util.Optional;
 import java.util.stream.Collectors;
 
@@ -25,7 +26,36 @@ public class TerminalExample1 {
 		SummingInt();
 		System.out.println("***AverageInt***");
 		averageInt();
+		System.out.println("***GroupingBy***");
+		groupBy();
+		System.out.println("***GroupingByCustomValue***");
+		groupByCustomValue();
 
+	}
+
+	public static void groupByCustomValue() {
+		List<Student> list = StudentDB.getAllStudents();
+		Map<String, List<Student>> value = list.stream().collect(Collectors.groupingBy((Student s) -> {
+			if (s.getGender().equals("male")) {
+				return "M";
+			}
+			return "F";
+		}));
+		value.forEach((String gender, List<Student> students) -> {
+			System.out.println("--" + gender + "--");
+			students.forEach(s -> System.out.println(s.getName()));
+
+		});
+	}
+
+	public static void groupBy() {
+		List<Student> list = StudentDB.getAllStudents();
+		Map<String, List<Student>> value = list.stream().collect(Collectors.groupingBy(Student::getGender));
+		value.forEach((String gender, List<Student> students) -> {
+			System.out.println("--" + gender + "--");
+			students.forEach(s -> System.out.println(s.getName()));
+
+		});
 	}
 
 	public static void averageInt() {
