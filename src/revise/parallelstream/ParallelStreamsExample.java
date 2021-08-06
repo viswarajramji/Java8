@@ -16,7 +16,21 @@ public class ParallelStreamsExample {
 		realUseCaseStream();
 		realUseCaseParallelStream();
 		parallelLessPerformance();
+		notToUseParallel();
 
+	}
+
+	public static void notToUseParallel() {
+		Sum sumStream = new Sum();
+		List<Integer> listStream = IntStream.range(1, 100).boxed().collect(Collectors.toList());
+		listStream.stream().forEach(sumStream::performAdd);
+		
+		Sum sumParallel = new Sum();
+		List<Integer> listParallel = IntStream.range(1, 100).boxed().collect(Collectors.toList());
+		listParallel.parallelStream().forEach(sumParallel::performAdd);
+		
+		System.out.println("total Stream " + sumStream.getValue());
+		System.out.println("total Parallel " + sumParallel.getValue());
 	}
 
 	public static void parallelLessPerformance() {
