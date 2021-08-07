@@ -1,18 +1,17 @@
 package doubts;
 
-import java.util.function.Consumer;
+import java.util.function.Supplier;
 
 class Sample {
 
-	public String getTest(String name) {
-		return name;
+	public static String getTest() {
+		return "test";
 	}
 }
 
 public class SampleExample1 {
 	public static void main(String args[]) {
-		Consumer<Sample> value = (Sample s) -> {
-			s.getTest("hello");
-		};
+		Supplier<String> value=Sample::getTest;
+		System.out.println(value.get());
 	}
 }
