@@ -5,6 +5,7 @@ import java.util.List;
 import java.util.OptionalDouble;
 import java.util.OptionalInt;
 import java.util.OptionalLong;
+import java.util.stream.Collectors;
 import java.util.stream.IntStream;
 import java.util.stream.LongStream;
 
@@ -22,6 +23,37 @@ public class NumericMethodExamples {
 		basic5();
 		System.out.println("*****Basic6****");
 		basic6();
+		System.out.println("*****Basic7****");
+		basic7();
+		System.out.println("*****Basic8****");
+		basic8();
+		System.out.println("*****Basic9****");
+		basic9();
+		System.out.println("*****Basic10****");
+		basic10();
+	}
+
+	public static void basic10() {
+		Double sumValue = IntStream.rangeClosed(1, 10).mapToDouble(Double::new).sum();
+		System.out.println("Double value is  : " + sumValue);
+	}
+
+	public static void basic8() {
+		List<Integer> values = IntStream.rangeClosed(1, 10).mapToObj(Integer::new).collect(Collectors.toList());
+		values.forEach(System.out::println);
+	}
+
+	public static void basic9() {
+		Long sumValue = IntStream.rangeClosed(1, 10).mapToLong(Long::new).sum();
+		System.out.println("Long value is  : " + sumValue);
+	}
+
+	public static void basic7() {
+		List<Integer> values = IntStream.rangeClosed(1, 100).boxed().collect(Collectors.toList());
+		values.forEach(System.out::println);
+
+		int sumValue = values.stream().mapToInt(Integer::intValue).sum();
+		System.out.println(sumValue);
 
 	}
 
