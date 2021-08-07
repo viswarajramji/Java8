@@ -93,9 +93,10 @@ Used to avoid null pointer and to avoid having too many null conditions.
 
 * ofNullable : convert a value to an optional object.
 * Of : this method is used if you are 100% sure the value is not null else the method throws an exception.
+* get : fetch the value of optional
 * empty : this method is a default method
 * orElse: this method is used to print the default value if the optional value is null.
-* orElse: this method is used to print the supplier value if the optional value is null.
+* orElseGet: this method is used to print the supplier value if the optional value is null.
 * orElseThrow : This  method is going to throw a runtime exception.
 * isPresent: check if the optional has some values or not.
 * ifPresent: check if the optional has some values or not if yes then the consumer method is called to use that value.
@@ -109,6 +110,15 @@ Ex: Optional<Student -> Optional<Bike>>
 * static:  cannot be overriden.
 
 Note : Precedence order if a method is overridden in the child and is invoked then the child takes the precedence over the parent.
+
+###### Comparator
+* Comparator.naturalOrder : sort asc
+* Comparator.reverseOrder : sort desc
+* Comparator.comparing(Function<U,R>): sort by specific attribute.
+* Comparator.andThen(Comparator) :  sort by specific multi attribute.
+* Comparator.nullFirst : handles null execption and moves all the null values to the first
+* Comparator.nullLast:  handles null execption and moves all the null values to the Last
+
 
 
 
