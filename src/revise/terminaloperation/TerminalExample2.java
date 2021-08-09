@@ -3,7 +3,9 @@ package revise.terminaloperation;
 import java.util.Arrays;
 import java.util.Comparator;
 import java.util.List;
+import java.util.Map;
 import java.util.Optional;
+import java.util.Set;
 import java.util.stream.Collectors;
 
 import data.Student;
@@ -21,12 +23,54 @@ public class TerminalExample2 {
 		max();
 		System.out.println("min method");
 		min();
+		System.out.println("sum method");
+		sum();
+		System.out.println("avg method");
+		avg();
+		System.out.println("groupingBy method");
+		groupingBy();
+		System.out.println("groupingByDownStream method");
+		groupingDownStreamBased();
+	}
 
+	public static void groupingDownStreamBased() {
+		List<Student> students = StudentDB.getAllStudents();
+		Map<String, Set<Student>> value = students.stream().collect(Collectors.groupingBy(Student::getName, Collectors.toSet()));
+		value.forEach((gender, StudentList) -> {
+			System.out.println("Gender : " + gender);
+			StudentList.forEach(student -> {
+				System.out.println(student.getName());
+			});
+		});
+	}
+
+	public static void groupingBy() {
+		List<Student> students = StudentDB.getAllStudents();
+		Map<String, List<Student>> mapValues = students.stream().collect(Collectors.groupingBy(Student::getGender));
+		mapValues.forEach((gender, StudentList) -> {
+			System.out.println("Gender : " + gender);
+			StudentList.forEach(student -> {
+				System.out.println(student.getName());
+			});
+		});
+	}
+
+	public static void avg() {
+		List<Student> students = StudentDB.getAllStudents();
+		double sumValue = students.stream().collect(Collectors.averagingInt(Student::getMark1));
+		System.out.println("average value : " + sumValue);
+	}
+
+	public static void sum() {
+		List<Student> students = StudentDB.getAllStudents();
+		int sumValue = students.stream().collect(Collectors.summingInt(Student::getMark1));
+		System.out.println("sum value : " + sumValue);
 	}
 
 	public static void min() {
 		List<Student> students = StudentDB.getAllStudents();
-		Optional<Integer> maxValue = students.stream().map(Student::getMark1).collect(Collectors.minBy(Comparator.naturalOrder()));
+		Optional<Integer> maxValue = students.stream().map(Student::getMark1)
+				.collect(Collectors.minBy(Comparator.naturalOrder()));
 		if (maxValue.isPresent()) {
 			System.out.println(maxValue.get());
 			return;
