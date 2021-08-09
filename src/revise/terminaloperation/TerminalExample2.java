@@ -42,7 +42,6 @@ public class TerminalExample2 {
 		List<Student> students = StudentDB.getAllStudents();
 		Student obj = students.stream().collect(Collectors.collectingAndThen(Collectors.maxBy(Comparator.comparing(Student::getMark1)), Optional::get));
 		System.out.println(obj.getName());
-
 	}
 
 	public static void groupByMultiParams() {
