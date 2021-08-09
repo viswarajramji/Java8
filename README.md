@@ -73,9 +73,11 @@ This repository contain all the Java 8 related concepts and examples.
 
 ###### Streams API - terminal operations.
 
-The terminal operation is used perform the joining.
+The terminal operations are used to finalize the stream process and helps in fetching the result.
 
-* joining : concats the streams of string values.
+All the below methods belongs to Collectors class and is used with stream.collect().
+
+* joining : concats the streams of string values, It has 3 variations -  joining , joining(delimiter) , joining(delimiter, prefix , suffix).
 * counting :   return the total number for entries.
 * mapping : would perform a transformation and then collects the values.
 * maxBy / minBy : uses a comparator and returns Max / Min value.
