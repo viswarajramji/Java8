@@ -90,7 +90,7 @@ The terminal operation is used perform the joining.
 Used to avoid null pointer and to avoid having too many null conditions.
 
 ###### Optional Methods
-
+* valueOf : convert a value to Optional object.
 * ofNullable : convert a value to an optional object.
 * Of : this method is used if you are 100% sure the value is not null else the method throws an exception.
 * get : fetch the value of optional
