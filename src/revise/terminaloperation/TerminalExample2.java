@@ -2,6 +2,7 @@ package revise.terminaloperation;
 
 import java.util.Arrays;
 import java.util.Comparator;
+import java.util.LinkedHashMap;
 import java.util.List;
 import java.util.Map;
 import java.util.Optional;
@@ -31,11 +32,26 @@ public class TerminalExample2 {
 		groupingBy();
 		System.out.println("groupingByDownStream method");
 		groupingDownStreamBased();
+		System.out.println("groupingByDownStream method 3 arg params");
+		groupByMultiParams();
+	}
+
+	public static void groupByMultiParams() {
+		List<Student> students = StudentDB.getAllStudents();
+		LinkedHashMap<String, Set<Student>> values = students.stream()
+				.collect(Collectors.groupingBy(Student::getGender, LinkedHashMap::new, Collectors.toSet()));
+		values.forEach((gender, StudentList) -> {
+			System.out.println("Gender : " + gender);
+			StudentList.forEach(student -> {
+				System.out.println(student.getName());
+			});
+		});
 	}
 
 	public static void groupingDownStreamBased() {
 		List<Student> students = StudentDB.getAllStudents();
-		Map<String, Set<Student>> value = students.stream().collect(Collectors.groupingBy(Student::getName, Collectors.toSet()));
+		Map<String, Set<Student>> value = students.stream()
+				.collect(Collectors.groupingBy(Student::getName, Collectors.toSet()));
 		value.forEach((gender, StudentList) -> {
 			System.out.println("Gender : " + gender);
 			StudentList.forEach(student -> {
