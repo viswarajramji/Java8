@@ -36,11 +36,28 @@ public class TerminalExample2 {
 		groupByMultiParams();
 		System.out.println("comparing then");
 		comparingThen();
+		System.out.println("parition of");
+		paritionOf();
+	}
+
+	public static void paritionOf() {
+		List<Student> students = StudentDB.getAllStudents();
+		Map<Boolean, List<Student>> values = students.stream().collect(Collectors.partitioningBy((Student s) -> {
+			return s.getGpa() > 3.5;
+		}));
+		values.forEach((match, StudentList) -> {
+			System.out.println("MATCH : " + match);
+			StudentList.forEach(student -> {
+				System.out.println(student.getName());
+			});
+		});
+		
 	}
 
 	public static void comparingThen() {
 		List<Student> students = StudentDB.getAllStudents();
-		Student obj = students.stream().collect(Collectors.collectingAndThen(Collectors.maxBy(Comparator.comparing(Student::getMark1)), Optional::get));
+		Student obj = students.stream().collect(
+				Collectors.collectingAndThen(Collectors.maxBy(Comparator.comparing(Student::getMark1)), Optional::get));
 		System.out.println(obj.getName());
 	}
 
