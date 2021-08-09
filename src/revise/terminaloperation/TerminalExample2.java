@@ -8,6 +8,15 @@ public class TerminalExample2 {
 	public static void main(String args[]) {
 		System.out.println("Joining method");
 		joining();
+		System.out.println("Counting method");
+		counting();
+	}
+
+	public static void counting() {
+		List<String> values = Arrays.asList("1", "2", "3", "4");
+		Long cnt = values.stream().collect(Collectors.counting());
+		System.out.println(cnt);
+
 	}
 
 	public static void joining() {
