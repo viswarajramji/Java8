@@ -14,5 +14,11 @@ public class TerminalExample2 {
 		List<String> values = Arrays.asList("1", "2", "3", "4");
 		String join = values.stream().collect(Collectors.joining());
 		System.out.println(join);
+
+		String joiningDelimiter = values.stream().collect(Collectors.joining("-"));
+		System.out.println(joiningDelimiter);
+
+		String joiningPre = values.stream().collect(Collectors.joining("-", "(", ")"));
+		System.out.println(joiningPre);
 	}
 }
