@@ -19,6 +19,26 @@ public class StreamExample2 {
 		example7();
 		example8();
 		example9();
+		example10();
+		example11();
+	}
+
+	public static void example11() {
+		List<Student> studentList = StudentDB.getAllStudents();
+		Optional<Student> student = studentList.stream().filter(s -> s.getGpa() == 4.0).findFirst();
+		student.ifPresent(s -> {
+			System.out.println("find first");
+			System.out.println(s.getName());
+		});
+	}
+
+	public static void example10() {
+		List<Student> studentList = StudentDB.getAllStudents();
+		Optional<Student> student = studentList.stream().filter(s -> s.getGpa() == 4.0).findAny();
+		student.ifPresent(s -> {
+			System.out.println("find anyone");
+			System.out.println(s.getName());
+		});
 	}
 
 	public static void example9() {
