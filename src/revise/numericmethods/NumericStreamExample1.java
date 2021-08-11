@@ -9,7 +9,7 @@ import java.util.stream.Collectors;
 import java.util.stream.IntStream;
 import java.util.stream.LongStream;
 
-public class NumericMethodExamples {
+public class NumericStreamExample1 {
 	public static void main(String args[]) {
 		System.out.println("*****Basic1****");
 		basic1();

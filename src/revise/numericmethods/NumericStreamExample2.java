@@ -5,7 +5,7 @@ import java.util.OptionalInt;
 import java.util.stream.Collectors;
 import java.util.stream.IntStream;
 
-public class NumericOperationExamples {
+public class NumericStreamExample2 {
 	public static void main(String args[]) {
 		example1();
 		example2();
