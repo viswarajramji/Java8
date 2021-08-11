@@ -81,11 +81,18 @@ All the below methods belongs to Collectors class and is used with stream.collec
 * counting :   return the total number for entries.
 * mapping : would perform a transformation and then collects the values.
 * maxBy / minBy : uses a comparator and returns Max / Min value.
-* SummingInt/averagingInt || SummingLong / averagingLong || SummingDouble /averagingDouble
-* grouping : performs groupby on the field.
-* groupBy : By max, min , CollectingAndthen.
-* paritioningBy: 
+* Sum : perform sum value 
+ 1.  Int : SummingInt  
+ 2.  Long: SummingLong
+ 3.  Double : SummingDouble
+ 
+* Avg : perform average value 
+ 1.  Int : averagingInt
+ 2.  Long: averagingLong
+ 3.  Double : averagingDouble
 
+* groupBy - 3 variations exists
+* paritioningBy: perform classification by true/false
 
 ###### Optional
 
