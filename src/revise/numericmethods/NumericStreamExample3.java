@@ -5,6 +5,22 @@ import java.util.stream.Collectors;
 import java.util.stream.IntStream;
 import java.util.stream.LongStream;
 
+class Value {
+	int i;
+
+	public Value(int i) {
+		this.i = i;
+	}
+
+	public int getI() {
+		return i;
+	}
+
+	public void setI(int i) {
+		this.i = i;
+	}
+
+}
 
 public class NumericStreamExample3 {
 	public static void main(String args[]) {
@@ -17,8 +33,10 @@ public class NumericStreamExample3 {
 	}
 
 	public static void example6() {
-		List<Integer> val = IntStream.range(1, 5).mapToObj(Integer::new).collect(Collectors.toList());
-		val.forEach(System.out::println);
+		List<Value> val = IntStream.range(1, 5).mapToObj(Value::new).collect(Collectors.toList());
+		val.forEach(v->{
+			System.out.println(v.getI());
+		});
 	}
 
 	public static void example5() {
