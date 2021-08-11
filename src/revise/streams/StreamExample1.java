@@ -9,7 +9,7 @@ import java.util.stream.Collectors;
 import data.Student;
 import data.StudentDB;
 
-public class StreamExamples {
+public class StreamExample1 {
 
 	public static Predicate<Student> filterbyMale = s -> "male".equals(s.getGender());
 
