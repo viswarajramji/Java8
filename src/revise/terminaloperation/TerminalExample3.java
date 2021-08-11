@@ -1,10 +1,11 @@
 package revise.terminaloperation;
 
+import java.util.Comparator;
 import java.util.LinkedHashMap;
 import java.util.List;
 import java.util.Map;
+import java.util.Optional;
 import java.util.Set;
-import java.util.stream.Collector;
 import java.util.stream.Collectors;
 
 import data.Student;
@@ -16,6 +17,19 @@ public class TerminalExample3 {
 		groupByExample2();
 		groupByExample3();
 		groupByExample4();
+		paritioning();
+	}
+
+	public static void paritioning() {
+		List<Student> students = StudentDB.getAllStudents();
+		Map<Boolean, List<Student>> result = students.stream()
+				.collect(Collectors.partitioningBy((s) -> s.getGender().equals("male")));
+		result.forEach((gender, listStudents) -> {
+			System.out.println("Status "  + gender);
+			listStudents.forEach(s -> {
+				System.out.println(s.getName());
+			});
+		});
 	}
 
 	public static void groupByExample4() {
