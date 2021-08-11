@@ -14,19 +14,54 @@ public class StreamExample2 {
 		example2();
 		example3();
 		example4();
+		example5();
+		example6();
+		example7();
+		example8();
+		example9();
+	}
+
+	public static void example9() {
+		List<Student> studentList = StudentDB.getAllStudents();
+		boolean status = studentList.stream().noneMatch(s -> s.getGpa() == 4.0);
+		System.out.println("noneMatch : " + status);
+	}
+
+	public static void example8() {
+		List<Student> studentList = StudentDB.getAllStudents();
+		boolean status = studentList.stream().anyMatch(s -> s.getGpa() == 4.0);
+		System.out.println("anyMatch : " + status);
+	}
+
+	public static void example7() {
+		List<Student> studentList = StudentDB.getAllStudents();
+		boolean status = studentList.stream().allMatch(s -> s.getGpa() > 4.0);
+		System.out.println("allMatch : " + status);
+	}
+
+	public static void example6() {
+		// skip value
+		int total = IntStream.rangeClosed(1, 10).skip(5).sum();
+		System.out.println(total);
+	}
+
+	public static void example5() {
+		// limit value
+		int limit = IntStream.rangeClosed(1, 100).limit(1).sum();
+		System.out.println(limit);
 	}
 
 	public static void example4() {
 		// find max of the student
 		List<Student> listOfStudents = StudentDB.getAllStudents();
-		Optional<Student> maxStudent = listOfStudents.stream().reduce((s1,s2)->{
-			if(s1.getGpa() > s2.getGpa()) {
+		Optional<Student> maxStudent = listOfStudents.stream().reduce((s1, s2) -> {
+			if (s1.getGpa() > s2.getGpa()) {
 				return s1;
 			}
 			return s2;
 		});
-		maxStudent.ifPresent(s->{
-			System.out.println(s.getName() +" "+s.getGpa() );
+		maxStudent.ifPresent(s -> {
+			System.out.println(s.getName() + " " + s.getGpa());
 		});
 	}
 
