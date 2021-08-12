@@ -4,6 +4,7 @@ import java.util.List;
 import java.util.UUID;
 import java.util.function.BiConsumer;
 import java.util.function.Consumer;
+import java.util.function.Function;
 import java.util.function.Predicate;
 import java.util.stream.Collectors;
 import java.util.stream.Stream;
@@ -18,6 +19,17 @@ public class LambdasExamples1 {
 		example3();
 		example4();
 		example5();
+		example6();
+
+	}
+
+	public static void example6() {
+		System.out.println("List all names");
+		List<Student> listStudents = StudentDB.getAllStudents();
+		Function<String, String> func = String::toUpperCase;
+		listStudents.forEach(s -> {
+			System.out.println(func.apply(s.getName()));
+		});
 
 	}
 
