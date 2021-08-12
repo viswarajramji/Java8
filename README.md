@@ -6,26 +6,218 @@ This repository contain all the Java 8 related concepts and examples.
 
 ##### Lambda & Functional Interface 
 
-1. Consumer andthen
-2. BiConsumer andthen
-3. Predicate : and or negate
-fucntiona and then
-biFucntion
-unary
-binaary
-supplier
+Java 8 introducted 4 Type of Interfaces and any lambda function written is adhered to this interface.
+
+1.Consumer Interface 
+
+This interface only passes parameters and no return value.
+
+* Standard
+ 
+```sh
+Consumer<T> consumer=new Consumer<T>() {
+	
+	@Override
+	public void accept(Student t) {
+		// TODO Auto-generated method stub
+		
+	}
+};
+```
+* Lambda
+ 
+```sh
+Consumer<T> consumer=((T s)->{
+	System.out.println(s);
+});
+```
+* Methods:
+ 
+	* andThen : combines consumer with another consumer
+
+2.BiConsumer : is similar to the consumer but user 2 parameters.
+
+3.Supplier Interface 
+
+This interface only returns value.
+
+* Standard
+ 
+```sh
+Supplier<T> supplier=new Supplier<T>() 
+	
+	@Override
+	public Student get() {
+		// TODO Auto-generated method stub
+		return null;
+	}
+};
+```
+* Lambda
+ 
+```sh
+Supplier<Student> supplier=(()->{
+	return null;
+});
+```
+4.Predicate
+
+This interface is used to validate the input and returns boolean only 
 
 
-Method reference
+* Standard
+ 
+```sh
+Predicate<T> predicate=new Predicate<T>() {
+
+	@Override
+	public boolean test(T t) {
+		// TODO Auto-generated method stub
+		return false;
+	}
+};
+```
+* Lambda
+ 
+```sh
+Predicate<T> predicate=((T t)->{
+	 return false;
+});
+```
+* Methods:
+ 
+	* and  : compares 2 predicate expression with and
+	
+	* or   : compares 2 predicate expression with or
+	
+	* negate : inverse operation on the expression result
+
+5.BiPredicate : Similar to the Predicate difference it uses 2 parameters.
+6.Functions: 
+
+This is used when there is a parameter sent and there is a return value.
+
+* Standard
+ 
+```sh
+Function<Student,Student> function=new Function<Student, Student>() {
+
+	@Override
+	public Student apply(Student t) {
+		// TODO Auto-generated method stub
+		return null;
+	}
+};
+```
+* Lambda
+ 
+```sh
+Function<Student, Student> fucn = ((Student a) -> {
+	return null;
+});
+```
+	>> andThen : combines function with another function.
+
+7.BiFunction : is similar to the function interface difference is it take 2 parameters.
+
+8.UnaryOperator : is similar to the function interface difference is the data type of the parameter send and returned are same. 
+
+9.BinaryOperator :  is similar to the UnaryOperator interface difference is it takes 2 parameter and returns one value with all same data type.
+
+
+#####  Method reference
+
+1.Static Reference. 
+
+```sh
+
+Test::printName , where printName is a static method
+
+
+is similar to 
+
+
+(T t)->{
+Test.printName(t)
+}
+
+
+```
+
+
+2.Instance Reference.
+
+```sh
+
+test::printName , where test is an object
+
+
+is similar to 
+
+
+(T t)->{
+test.printName(t)
+}
+
+
+```
+
+3.Class Reference
+
+
+```sh
+ 
+Student::printValue , where Student is the name of the class, printValue is the method name
+
+
+is similar to 
+
+
+(Student s)->{
+ s.printValue()
+}
+
+```
+
+
+4.Constructor Reference 
+
+
+```sh
+ public static void constructorReferenceObject3() {
+	BiFunction<String, String, Test> biFunc = Test::new;
+	Test test=biFunc.apply("testI", "testJ");
+	System.out.println("I and J value");
+	System.out.println(test.getI());
+	System.out.println(test.getJ());
+}
+
+public static void constructorReferenceObject2() {
+	Function<String, String> strFunc = String::new;
+	String str = strFunc.apply("hello user");
+	System.out.println(str);
+
+}
+
+public static void constructorReferenceObject1() {
+	Supplier<String> strFunc = String::new;
+	String str = strFunc.get();
+	System.out.println(str);
+
+}
+
+```
+
+
+
+##### Effectively final: 
 
 * The lambda variable name and the local variable names cannot be same.
 * The local variables cannot be modified inside lambda expressions.
 * No restrictions for instance variables.
-* A local variable used inside a lambda expression is termed as effectively final. [Refer](https://github.com/viswarajramji/Java8/blob/master/src/lambda/LambdaLocalVariables.java) 
+* A local variable used inside a lambda expression is termed as effectively final and cannot be modified any where in the scope.
+[Refer](https://github.com/viswarajramji/Java8/blob/master/src/lambda/LambdaLocalVariables.java) 
 * In General until Java 7, Any variables used inside anonymous function must be declared as final. 
-
-
-
 
 
 ##### Streams: 
@@ -53,37 +245,47 @@ Method reference
 * of: converts a values to a stream.
 * iterate: this just iterates the values in a loop infinity (Use limit func to limit the iteration)
 * generate: this just uses supplier method and the get method is invoked infinity (Use limit func to limit the iteration)
+* mapToInt : converts Stream to intStream applies 
+* mapToLong : converts Stream to  LongStream.
+* mapToDouble : converts Stream to DoubleStream.
+
 
 ##### Stream  - Numeric
 
-######  intStream
-* rangeClosed: generates series of numbers.
+######  IntStream 
+* rangeClosed: generates series of int values.
 * range: generates the series of number excluding the last value.
-
 
 ######  LongStream
-* rangeClosed: generates series of numbers.
+* rangeClosed: generates series of long values.
 * range: generates the series of number excluding the last value.
-* sum: perform sum in the intStream.
 
 ######  DoubleStream
-* it does not support both rangeClosed and range. use the alternative approached discussed in the link.
+* it does not support both rangeClosed and range.
+
 
 ###### Aggregate functions in numeric functions:
 
-* sum:  Adds the numeric stream values.
+* sum: Adds the numeric stream values.
 * max: find the max of the numeric stream values.
 * min: find the min of the numeric stream values.
 * avg: find the avg of the numeric stream values.
 
-###### Boxing and Unboxing of Numeric Streams
+###### Boxing and Unboxing of Numeric Streams:
 
-* Boxing :  int -> Integer / unboxing : Integer -> int.
-* boxed : will convert intStream to Stream<Integer>
-* mapToInt: convert Stream to intputStream.
-* mapToDouble: Convert stream to DoubleStream.
-* mapToLong: convert Stream to LongStream.
-* mapToObj: convert Stream to stream of Objects.
+* Boxing :  int -> Integer.
+
+* Unboxing : Integer -> int.
+
+* IntStream:
+
+	* mapToLong : will convert to LongStream.
+	
+	* mapToDouble : will convert to DoubleStream.
+	
+	* boxed : will convert intStream to Stream<Integer>.
+	
+	* mapToObj: will convert to Stream<Object>.
 
 ###### Streams API - terminal operations.
 
@@ -96,11 +298,13 @@ All the below methods belongs to Collectors class and is used with stream.collec
 * mapping : would perform a transformation and then collects the values.
 * maxBy / minBy : uses a comparator and returns Max / Min value.
 * Sum : perform sum value 
+
  1.  Int : SummingInt  
  2.  Long: SummingLong
  3.  Double : SummingDouble
  
 * Avg : perform average value 
+
  1.  Int : averagingInt
  2.  Long: averagingLong
  3.  Double : averagingDouble
