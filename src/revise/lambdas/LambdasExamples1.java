@@ -8,13 +8,35 @@ import java.util.function.Predicate;
 import java.util.stream.Collectors;
 import java.util.stream.Stream;
 
+import data.Student;
+import data.StudentDB;
+
 public class LambdasExamples1 {
 	public static void main(String args[]) {
 		example1(10);
 		example2();
 		example3();
 		example4();
+		example5();
 
+	}
+
+	public static void example5() {
+		System.out.println("The example 5");
+		Predicate<Student> filterGender = (Student s) -> "male".equals(s.getGender());
+		List<Student> listStudents = StudentDB.getAllStudents();
+		System.out.println("FeMale");
+		listStudents.forEach(s -> {
+			if (filterGender.negate().test(s)) {
+				System.out.println("Name : " + s.getName() + " GPA : " + s.getGpa());
+			}
+		});
+		System.out.println("Male");
+		listStudents.forEach(s -> {
+			if (filterGender.test(s)) {
+				System.out.println("Name : " + s.getName() + " GPA : " + s.getGpa());
+			}
+		});
 	}
 
 	public static void example4() {
