@@ -10,6 +10,7 @@ import java.util.function.BinaryOperator;
 import java.util.function.Consumer;
 import java.util.function.Function;
 import java.util.function.Predicate;
+import java.util.function.Supplier;
 import java.util.function.UnaryOperator;
 import java.util.stream.Collectors;
 import java.util.stream.Stream;
@@ -34,6 +35,17 @@ public class LambdasExamples1 {
 		example7();
 		example8();
 		example9();
+		example10();
+
+	}
+
+	public static void example10() {
+		System.out.println("Supplier Method");
+		List<Student> listStudents = StudentDB.getAllStudents();
+		listStudents.forEach(student -> {
+			Supplier<String> getName = student::getName;
+			System.out.println(getName.get());
+		});
 
 	}
 
