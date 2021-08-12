@@ -1,6 +1,9 @@
 package revise.lambdas;
 
+import java.util.Comparator;
 import java.util.List;
+import java.util.Map;
+import java.util.Optional;
 import java.util.UUID;
 import java.util.function.BiConsumer;
 import java.util.function.Consumer;
@@ -20,7 +23,21 @@ public class LambdasExamples1 {
 		example4();
 		example5();
 		example6();
+		example7();
 
+	}
+
+	public static void example7() {
+		System.out.println("List all names");
+		List<Student> listStudents = StudentDB.getAllStudents();
+		Map<Integer, Optional<Student>> values = listStudents.stream().collect(
+				Collectors.groupingBy(Student::getGradeLevel, Collectors.minBy(Comparator.comparing(Student::getGpa))));
+		values.forEach((grade, optStudent) -> {
+			System.out.println("Grade : " + grade);
+			optStudent.ifPresent(s -> {
+				System.out.println("Name : " + s.getName() + "GPA : " + s.getGpa());
+			});
+		});
 	}
 
 	public static void example6() {
@@ -30,7 +47,6 @@ public class LambdasExamples1 {
 		listStudents.forEach(s -> {
 			System.out.println(func.apply(s.getName()));
 		});
-
 	}
 
 	public static void example5() {
