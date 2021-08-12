@@ -10,7 +10,13 @@ This repository contain all the Java 8 related concepts and examples.
 2. BiConsumer andthen
 3. Predicate : and or negate
 fucntiona and then
+biFucntion
+unary
+binaary
+supplier
 
+
+Method reference
 
 * The lambda variable name and the local variable names cannot be same.
 * The local variables cannot be modified inside lambda expressions.

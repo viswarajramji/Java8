@@ -6,14 +6,22 @@ import java.util.Map;
 import java.util.Optional;
 import java.util.UUID;
 import java.util.function.BiConsumer;
+import java.util.function.BinaryOperator;
 import java.util.function.Consumer;
 import java.util.function.Function;
 import java.util.function.Predicate;
+import java.util.function.UnaryOperator;
 import java.util.stream.Collectors;
 import java.util.stream.Stream;
 
 import data.Student;
 import data.StudentDB;
+
+class StringConcat {
+	public static String concat(String x, String y) {
+		return "Name : " + x + " Gender : " + y;
+	}
+}
 
 public class LambdasExamples1 {
 	public static void main(String args[]) {
@@ -24,7 +32,27 @@ public class LambdasExamples1 {
 		example5();
 		example6();
 		example7();
+		example8();
+		example9();
 
+	}
+
+	public static void example9() {
+		System.out.println("Binary Functions");
+		List<Student> listStudents = StudentDB.getAllStudents();
+		BinaryOperator<String> binaryOperator = StringConcat::concat;
+		listStudents.forEach(s -> {
+			System.out.println(binaryOperator.apply(s.getName(), s.getGender()));
+		});
+	}
+
+	public static void example8() {
+		System.out.println("Unary Functions");
+		List<Student> listStudents = StudentDB.getAllStudents();
+		UnaryOperator<String> unaryOperator = String::toUpperCase;
+		listStudents.forEach(s -> {
+			System.out.println(unaryOperator.apply(s.getName()));
+		});
 	}
 
 	public static void example7() {
