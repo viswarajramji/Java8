@@ -93,6 +93,7 @@ Predicate<T> predicate=((T t)->{
 	* negate : inverse operation on the expression result
 
 5.BiPredicate : Similar to the Predicate difference it uses 2 parameters.
+
 6.Functions: 
 
 This is used when there is a parameter sent and there is a return value.
@@ -287,6 +288,7 @@ public static void constructorReferenceObject1() {
 	
 	* mapToObj: will convert to Stream<Object>.
 
+
 ###### Streams API - terminal operations.
 
 The terminal operations are used to finalize the stream process and helps in fetching the result.
@@ -299,15 +301,15 @@ All the below methods belongs to Collectors class and is used with stream.collec
 * maxBy / minBy : uses a comparator and returns Max / Min value.
 * Sum : perform sum value 
 
- 1.  Int : SummingInt  
- 2.  Long: SummingLong
- 3.  Double : SummingDouble
+	 1.  Int : SummingInt  
+	 2.  Long: SummingLong
+	 3.  Double : SummingDouble
  
 * Avg : perform average value 
 
- 1.  Int : averagingInt
- 2.  Long: averagingLong
- 3.  Double : averagingDouble
+	 1.  Int : averagingInt
+	 2.  Long: averagingLong
+	 3.  Double : averagingDouble
 
 * groupBy - 3 variations exists
 * paritioningBy: perform classification by true/false
