@@ -281,13 +281,9 @@ public static void constructorReferenceObject1() {
 * IntStream:
 
 	* mapToLong : will convert to LongStream.
-	
 	* mapToDouble : will convert to DoubleStream.
-	
 	* boxed : will convert intStream to Stream<Integer>.
-	
 	* mapToObj: will convert to Stream<Object>.
-
 
 ###### Streams API - terminal operations.
 
